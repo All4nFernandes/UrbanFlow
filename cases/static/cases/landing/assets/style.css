@@ -1,0 +1,187 @@
+/* Imagem principal */
+#img-hero {
+    border-radius: 30px;
+}
+
+/* Seção de valores */
+#card {
+    width: 100%;
+}
+
+/* Organização dos cards */
+#card2 {
+    width: 100%;
+}
+
+/* Cards individuais */
+.card-valores {
+    width: 100%;
+    min-height: 200px;
+    height: 100%;
+
+    background-color: #F4F8FA;
+    border: 1px solid #E0E8EC;
+    border-radius: 15px;
+
+    padding: 25px 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s;
+}
+
+/* Imagens */
+.card-valores img {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+/* Textos */
+.card-valores h5 {
+    color: #123C50;
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+}
+
+/* Efeito ao passar o mouse */
+.card-valores:hover {
+    background-color: #E7F5F4;
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Seção Missão e Visão */
+
+#missao-visao {
+    width: 100%;
+}
+
+/* Cards */
+.card-missao {
+    width: 100%;
+    min-height: 280px;
+    height: 100%;
+
+    background-color: #F4F8FA;
+    border: 1px solid #E0E8EC;
+    border-radius: 15px;
+
+    padding: 35px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    transition: 0.3s;
+}
+
+/* Imagens */
+.card-missao img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+/* Títulos */
+.card-missao h3 {
+    color: #123C50;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Descrição */
+.card-missao p {
+    color: #536575;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Hover */
+.card-missao:hover {
+    background-color: #E7F5F4;
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+    .card-missao {
+        padding: 25px;
+        min-height: 250px;
+    }
+}
+
+.footer-urban {
+    background-color: #102C3D;
+    color: #ffffff;
+    margin-top: 50px;
+}
+
+.footer-logo {
+    color: #16A99C;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer-urban p {
+    color: #C5D5DE;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.footer-urban h5 {
+    color: #ffffff;
+    font-size: 17px;
+    margin-bottom: 18px;
+}
+
+.footer-urban ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-urban ul li {
+    margin-bottom: 12px;
+    color: #C5D5DE;
+    font-size: 14px;
+}
+
+.footer-urban ul li a {
+    color: #C5D5DE;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-urban ul li a:hover {
+    color: #16A99C;
+}
+
+.footer-urban hr {
+    border-color: #647482;
+    margin: 30px 0 20px;
+}
+
+.footer-bottom {
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 13px;
+}
+
+#img-time{
+    border-radius: 30px;
+}

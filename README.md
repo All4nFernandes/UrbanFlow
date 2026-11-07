@@ -7,6 +7,7 @@ Sistema web para abertura e acompanhamento de chamados urbanos georreferenciados
 Implementado:
 - Login por CPF ou nome de usuário e cadastro de requerentes.
 - Papéis requester, auditor e superuser, com autorização nas views e no Django Admin.
+- Landing page pública como página inicial, com botão Abrir chamado direcionando ao login.
 - Painel com mapa, abertura de chamados, detalhes e status público.
 - Edicao e exclusao de chamados somente pelo superuser; a exclusao exige confirmacao e envio por POST com CSRF.
 - Seleção no mapa para preencher latitude e longitude.
@@ -84,8 +85,8 @@ Troque Prefeitura01 pelo nome de usuário correto.
 
 | Caminho | Uso |
 | --- | --- |
-| / | Redireciona para painel ou login |
-| /login/ | Login por CPF ou usuário |
+| / | Landing page pública do UrbanFlow |
+| /login/ | Login por CPF ou usuário; após login, redireciona ao painel |
 | /logout/ | Logout por POST com CSRF |
 | /accounts/cadastro/ | Cadastro de requerente |
 | /chamados/ | Painel e mapa |
@@ -109,6 +110,7 @@ Os templates usam nomes de rota Django, como cases:list, cases:create, login e l
 
     accounts/                 Usuários, autenticação e permissões
     cases/                    Chamados, views, formulários e templates
+    cases/static/cases/landing/ Landing page, imagens e estilos próprios
     cases/static/cases/css/   Estilos da interface
     cases/static/cases/js/    JavaScript dos mapas
     config/                   Settings e URLs do projeto

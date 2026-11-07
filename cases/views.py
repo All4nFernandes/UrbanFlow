@@ -12,9 +12,17 @@ from .models import Case
 
 
 def home(request):
-    if request.user.is_authenticated:
-        return redirect("cases:list")
-    return redirect("login")
+    value_cards = [
+        {"image": "cases/landing/assets/9.png", "label": "Inovação"},
+        {"image": "cases/landing/assets/8.png", "label": "Transparência"},
+        {"image": "cases/landing/assets/6.png", "label": "Sustentabilidade"},
+        {"image": "cases/landing/assets/7.png", "label": "Eficiência"},
+        {"image": "cases/landing/assets/5.png", "label": "Comprometimento"},
+        {"image": "cases/landing/assets/4.png", "label": "Excelência"},
+        {"image": "cases/landing/assets/2.png", "label": "Responsabilidade social"},
+        {"image": "cases/landing/assets/2.png", "label": "Colaboração"},
+    ]
+    return render(request, "landing.html", {"value_cards": value_cards})
 
 
 @role_required(User.Role.REQUESTER, User.Role.AUDITOR, User.Role.SUPERUSER)

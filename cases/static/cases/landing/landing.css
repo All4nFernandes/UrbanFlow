@@ -1,0 +1,190 @@
+/* Imagem principal */
+#img-hero {
+    border-radius: 30px;
+}
+
+/* Seção de valores */
+#card {
+    width: 100%;
+}
+
+/* Organização dos cards */
+#card2 {
+    width: 100%;
+}
+
+/* Cards individuais */
+.card-valores {
+    width: 100%;
+    min-height: 200px;
+    height: 100%;
+
+    background-color: #F4F8FA;
+    border: 1px solid #E0E8EC;
+    border-radius: 15px;
+
+    padding: 25px 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s;
+}
+
+/* Imagens */
+.card-valores img {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+/* Textos */
+.card-valores h5 {
+    color: #123C50;
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+}
+
+/* Efeito ao passar o mouse */
+.card-valores:hover {
+    background-color: #E7F5F4;
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Seção Missão e Visão */
+
+#missao-visao {
+    width: 100%;
+}
+
+/* Cards */
+.card-missao {
+    width: 100%;
+    min-height: 280px;
+    height: 100%;
+
+    background-color: #F4F8FA;
+    border: 1px solid #E0E8EC;
+    border-radius: 15px;
+
+    padding: 35px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    transition: 0.3s;
+}
+
+/* Imagens */
+.card-missao img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+/* Títulos */
+.card-missao h3 {
+    color: #123C50;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Descrição */
+.card-missao p {
+    color: #536575;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Hover */
+.card-missao:hover {
+    background-color: #E7F5F4;
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+    .card-missao {
+        padding: 25px;
+        min-height: 250px;
+    }
+}
+
+.footer-urban {
+    background-color: #102C3D;
+    color: #ffffff;
+    margin-top: 50px;
+}
+
+.footer-logo {
+    color: #16A99C;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer-urban p {
+    color: #C5D5DE;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.footer-urban h5 {
+    color: #ffffff;
+    font-size: 17px;
+    margin-bottom: 18px;
+}
+
+.footer-urban ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-urban ul li {
+    margin-bottom: 12px;
+    color: #C5D5DE;
+    font-size: 14px;
+}
+
+.footer-urban ul li a {
+    color: #C5D5DE;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-urban ul li a:hover {
+    color: #16A99C;
+}
+
+.footer-urban hr {
+    border-color: #647482;
+    margin: 30px 0 20px;
+}
+
+.footer-bottom {
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 13px;
+}
+
+#img-time{
+    border-radius: 30px;
+}
+
+.landing-page{color:#183648}.landing-page .navbar{z-index:20}.landing-page .navbar-brand{color:#123c50}.btn-urbanflow{border:1px solid #087e78;background:#087e78;color:#fff;font-weight:700;border-radius:10px;padding:.72rem 1.15rem}.btn-urbanflow:hover,.btn-urbanflow:focus{background:#06645f;border-color:#06645f;color:#fff}.btn-outline-urbanflow{border:1px solid #087e78;color:#06645f;border-radius:10px;font-weight:650;padding:.72rem 1.15rem}.btn-outline-urbanflow:hover{background:#e7f5f4;color:#06645f}.hero-section{min-height:70vh;display:flex;align-items:center}.hero-image,.team-image{width:100%;max-height:500px;object-fit:cover;border-radius:26px;box-shadow:0 18px 48px rgba(16,44,61,.12)}.landing-eyebrow{color:#087e78;font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.hero-section h1{color:#123c50;letter-spacing:-.04em}.hero-section .lead{color:#455d6c;font-size:1.08rem}.section-heading h2,.team-section h2{color:#123c50}.card-missao{background:#f4f8fa;border:1px solid #e0e8ec;border-radius:16px;padding:32px;transition:transform .2s,box-shadow .2s}.card-missao:hover,.card-valores:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(16,44,61,.1)}.card-missao img{width:68px;height:68px;object-fit:contain;margin-bottom:18px}.card-missao h3{color:#123c50;font-size:1.4rem;font-weight:750}.card-missao p{color:#536575;line-height:1.8;margin:0}.card-valores{height:100%;min-height:185px;background:#f4f8fa;border:1px solid #e0e8ec;border-radius:15px;padding:24px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s}.card-valores img{width:82px;height:82px;object-fit:contain;margin-bottom:14px}.card-valores h3{margin:0;color:#123c50;font-size:1rem;text-align:center;font-weight:700}.team-section{background:#eaf4f3}.team-section p{color:#536575;line-height:1.8}.footer-urban{background:#102c3d;color:#fff;margin-top:0}.footer-logo{color:#16a99c;font-size:1.8rem;font-weight:800;margin-bottom:14px}.footer-urban h3{font-size:1.05rem;margin-bottom:16px}.footer-urban p,.footer-urban li{color:#c5d5de;font-size:.9rem;line-height:1.75}.footer-urban ul{list-style:none;padding:0;margin:0}.footer-urban li{margin-bottom:9px}.footer-urban a{color:#c5d5de;text-decoration:none}.footer-urban a:hover{color:#70dac8}.footer-urban hr{border-color:#647482;margin:28px 0 18px}.footer-bottom{text-align:center}.footer-bottom p{margin:0;font-size:.82rem}
+@media(max-width:767px){.hero-section{min-height:auto}.hero-section h1{font-size:2.4rem}.btn-outline-urbanflow{margin-left:0!important}.card-missao{padding:25px}.team-section .row{flex-direction:column-reverse}}
