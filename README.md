@@ -8,6 +8,7 @@ Implementado:
 - Login por CPF ou nome de usuário e cadastro de requerentes.
 - Papéis requester, auditor e superuser, com autorização nas views e no Django Admin.
 - Painel com mapa, abertura de chamados, detalhes e status público.
+- Edicao e exclusao de chamados somente pelo superuser; a exclusao exige confirmacao e envio por POST com CSRF.
 - Seleção no mapa para preencher latitude e longitude.
 - CSS e JavaScript da aplicação em arquivos estáticos.
 
@@ -90,6 +91,8 @@ Troque Prefeitura01 pelo nome de usuário correto.
 | /chamados/ | Painel e mapa |
 | /chamados/novo/ | Abertura de chamado |
 | /chamados/<id>/ | Detalhes ou status público |
+| /chamados/<id>/editar/ | Edicao restrita ao superuser |
+| /chamados/<id>/excluir/ | Confirmacao e exclusao restritas ao superuser |
 | /admin/ | Administração do superuser |
 
 Os templates usam nomes de rota Django, como cases:list, cases:create, login e logout, em vez de repetir caminhos fixos.
@@ -100,7 +103,7 @@ Os templates usam nomes de rota Django, como cases:list, cases:create, login e l
 | --- | --- |
 | requester | Abre chamados, vê os detalhes dos próprios e o status público dos demais |
 | auditor | Consulta todos os chamados e o mapa; não gerencia dados no Django Admin |
-| superuser | Gerencia usuários e chamados no Django Admin, inclusive exclusões |
+| superuser | Cria, edita e exclui chamados; gerencia usuarios pelo Django Admin |
 
 ## Estrutura principal
 

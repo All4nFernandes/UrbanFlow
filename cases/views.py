@@ -7,7 +7,7 @@ from django.urls import reverse
 
 from accounts.decorators import role_required
 from accounts.models import User
-from .forms import CaseForm
+from .forms import CaseForm, CaseUpdateForm
 from .models import Case
 
 
@@ -49,6 +49,7 @@ def case_list(request):
         "map_cases": map_cases,
         "is_privileged": is_privileged,
         "can_create": role in (User.Role.REQUESTER, User.Role.SUPERUSER),
+        "can_manage": role == User.Role.SUPERUSER,
     })
 
 
@@ -77,6 +78,7 @@ def case_detail(request, pk):
             return render(request, "cases/case_detail.html", {
                 "case": case,
                 "is_privileged": False,
+                "can_manage": False,
             })
         if case.is_public:
             return render(request, "cases/public_status.html", {
@@ -89,6 +91,35 @@ def case_detail(request, pk):
         return render(request, "cases/case_detail.html", {
             "case": case,
             "is_privileged": True,
+            "can_manage": role == User.Role.SUPERUSER,
         })
 
     raise PermissionDenied
+@role_required(User.Role.SUPERUSER)
+def case_update(request, pk):
+    case = get_object_or_404(Case, pk=pk)
+    form = CaseUpdateForm(request.POST or None, instance=case)
+
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        messages.success(request, "Chamado atualizado com sucesso.")
+        return redirect("cases:detail", pk=case.pk)
+
+    return render(request, "cases/case_form.html", {
+        "form": form,
+        "case": case,
+        "is_edit": True,
+    })
+
+
+@role_required(User.Role.SUPERUSER)
+def case_delete(request, pk):
+    case = get_object_or_404(Case.objects.select_related("requester"), pk=pk)
+
+    if request.method == "POST":
+        title = case.title
+        case.delete()
+        messages.success(request, f'Chamado "{title}" excluído com sucesso.')
+        return redirect("cases:list")
+
+    return render(request, "cases/case_confirm_delete.html", {"case": case})

@@ -25,3 +25,18 @@ class CaseForm(forms.ModelForm):
             "latitude": forms.NumberInput(attrs={"class": "field", "step": "0.000001", "id": "id_latitude"}),
             "longitude": forms.NumberInput(attrs={"class": "field", "step": "0.000001", "id": "id_longitude"}),
         }
+
+
+class CaseUpdateForm(CaseForm):
+    class Meta(CaseForm.Meta):
+        fields = CaseForm.Meta.fields + ("status", "is_public")
+        labels = {
+            **CaseForm.Meta.labels,
+            "status": "Status do chamado",
+            "is_public": "Exibir status publicamente",
+        }
+        widgets = {
+            **CaseForm.Meta.widgets,
+            "status": forms.Select(attrs={"class": "field"}),
+            "is_public": forms.CheckboxInput(attrs={"class": "field checkbox"}),
+        }

@@ -1,0 +1,12 @@
+{% extends "cases/base.html" %}
+{% block title %}Excluir chamado &middot; UrbanFlow{% endblock %}
+{% block breadcrumb %}EXCLUIR CHAMADO #{{ case.pk }}{% endblock %}
+{% block topbar_title %}Confirmar exclus&atilde;o{% endblock %}
+{% block content %}
+<section class="panel confirm-page">
+<div class="eyebrow">A&ccedil;&atilde;o administrativa</div><h1>Excluir chamado?</h1>
+<p>Esta a&ccedil;&atilde;o remover&aacute; permanentemente o chamado abaixo. Essa opera&ccedil;&atilde;o n&atilde;o pode ser desfeita.</p>
+<div class="confirm-summary"><strong>{{ case.title }}</strong><span>#{{ case.pk }} &middot; {{ case.category }} &middot; {{ case.get_status_display }}</span><span>Requerente: {{ case.requester.get_full_name|default:case.requester.username }}</span></div>
+<form method="post" class="actions">{% csrf_token %}<button class="button danger" type="submit">Confirmar exclus&atilde;o</button><a class="button secondary" href="{% url 'cases:detail' case.pk %}">Manter chamado</a></form>
+</section>
+{% endblock %}
