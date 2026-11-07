@@ -1,0 +1,8 @@
+{% extends "cases/base.html" %}
+{% block title %}{{ case.title }} &middot; UrbanFlow{% endblock %}
+{% block breadcrumb %}CHAMADO #{{ case.pk }}{% endblock %}
+{% block topbar_title %}Detalhes do chamado{% endblock %}
+{% block content %}
+<section class="page-heading"><div><div class="eyebrow">Chamado #{{ case.pk }} &middot; {{ case.get_status_display }}</div><h1>{{ case.title }}</h1><p>Registrado em {{ case.created_at|date:"d/m/Y H:i" }}</p></div><a class="button secondary" href="{% url 'cases:list' %}">Voltar ao painel</a></section>
+<section class="panel"><div class="detail-grid"><div class="detail-item"><small>Categoria</small><strong>{{ case.category }}</strong></div><div class="detail-item"><small>Status</small><strong><span class="badge status-{{ case.status }}">{{ case.get_status_display }}</span></strong></div><div class="detail-item"><small>Requerente</small><strong>{{ case.requester.get_full_name|default:case.requester.username }}</strong></div><div class="detail-item"><small>Coordenadas</small><strong>{{ case.latitude }}, {{ case.longitude }}</strong></div></div><div class="detail-description"><h2>Descri&ccedil;&atilde;o</h2><p>{{ case.description|linebreaksbr }}</p></div>{% if is_privileged %}<p class="map-note">Visibilidade p&uacute;blica do status: {% if case.is_public %}sim{% else %}n&atilde;o{% endif %}</p>{% endif %}</section>
+{% endblock %}

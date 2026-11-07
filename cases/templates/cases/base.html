@@ -1,0 +1,29 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#102a43">
+<title>{% block title %}UrbanFlow{% endblock %}</title>
+<link rel="preconnect" href="https://unpkg.com"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="{% static 'cases/css/urbanflow.css' %}">
+{% block head %}{% endblock %}</head>
+<body class="{% if user.is_authenticated %}app-shell{% else %}auth-shell{% endif %}">
+{% if user.is_authenticated %}
+<aside class="sidebar">
+<a class="brand" href="{% url 'home' %}" aria-label="UrbanFlow, inicio"><span class="brand-mark">U</span><span>Urban<span class="brand-accent">Flow</span><small>GEST&Atilde;O URBANA</small></span></a>
+<div class="sidebar-caption">MENU PRINCIPAL</div><nav class="side-nav" aria-label="Navega&ccedil;&atilde;o principal">
+<a class="side-link {% if request.resolver_match.url_name == 'list' %}is-active{% endif %}" href="{% url 'cases:list' %}"><span class="nav-icon">01</span>Painel de chamados</a>
+{% if user.role == 'requester' or user.role == 'superuser' %}<a class="side-link {% if request.resolver_match.url_name == 'create' %}is-active{% endif %}" href="{% url 'cases:create' %}"><span class="nav-icon">02</span>Novo chamado</a>{% endif %}
+{% if user.role == 'superuser' %}<a class="side-link" href="{% url 'admin:index' %}"><span class="nav-icon">03</span>Administra&ccedil;&atilde;o</a>{% endif %}
+</nav>
+<div class="sidebar-bottom"><div class="sidebar-caption">SESS&Atilde;O</div><div class="account-chip"><span class="avatar">{{ user.first_name|default:user.username|slice:":1"|upper }}</span><span class="account-copy"><strong>{{ user.get_full_name|default:user.username }}</strong><small>{{ user.get_role_display }}</small></span></div>
+<form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="side-link logout-link" type="submit"><span class="nav-icon">SAIR</span>Sair da conta</button></form></div>
+</aside>
+<main class="workspace"><header class="topbar"><div><span class="topbar-kicker">URBANFLOW / {% block breadcrumb %}PAINEL{% endblock %}</span><strong>{% block topbar_title %}Central de atendimento urbano{% endblock %}</strong></div><div class="topbar-user"><span class="online-dot"></span><span>{{ user.get_full_name|default:user.username }}</span></div></header><div class="page-content">
+{% else %}
+<header class="auth-topbar"><a class="brand brand-light" href="{% url 'home' %}"><span class="brand-mark">U</span><span>Urban<span class="brand-accent">Flow</span><small>GEST&Atilde;O URBANA</small></span></a><a class="auth-home-link" href="{% url 'home' %}">Acesso seguro &agrave; plataforma</a></header><main class="auth-content">
+{% endif %}
+{% for message in messages %}<div class="notice notice-{{ message.tags|default:'info' }}" role="status">{{ message }}</div>{% endfor %}
+{% block content %}{% endblock %}
+{% if user.is_authenticated %}</div><footer class="app-footer">UrbanFlow <span>&middot;</span> Gest&atilde;o de chamados urbanos</footer></main>
+{% else %}</main><footer class="auth-footer">UrbanFlow <span>&middot;</span> Servi&ccedil;o p&uacute;blico, cidade melhor</footer>{% endif %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>{% block scripts %}{% endblock %}
+</body></html>

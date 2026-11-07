@@ -1,0 +1,4 @@
+-- DESATIVADO: não executar este arquivo.
+-- A modelagem passou a ser responsabilidade dos models e migrações do Django.
+-- O ambiente local começará com SQLite; PostgreSQL/PostGIS será configurado
+-- depois, como banco de produção, em uma migração própria do projeto.

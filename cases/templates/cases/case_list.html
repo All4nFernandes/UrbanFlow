@@ -1,0 +1,16 @@
+{% extends "cases/base.html" %}
+{% load static %}
+{% block title %}Painel de chamados &middot; UrbanFlow{% endblock %}
+{% block breadcrumb %}PAINEL DE CHAMADOS{% endblock %}
+{% block topbar_title %}Acompanhamento urbano{% endblock %}
+{% block content %}
+<section class="page-heading"><div><div class="eyebrow">Painel urbano &middot; {{ user.get_role_display }}</div><h1>{% if is_privileged %}Vis&atilde;o geral da cidade{% else %}Ol&aacute;, {{ user.first_name|default:user.username }}{% endif %}</h1><p>{% if is_privileged %}Acompanhe os chamados registrados e sua distribui&ccedil;&atilde;o no mapa.{% else %}Acompanhe seus registros e os status p&uacute;blicos da cidade.{% endif %}</p></div>{% if can_create %}<a class="button" href="{% url 'cases:create' %}"><span aria-hidden="true">+</span> Abrir chamado</a>{% endif %}</section>
+<section class="stats-row" aria-label="Resumo dos chamados"><article class="stat-card"><span class="stat-label">Chamados vis&iacute;veis</span><strong class="stat-value">{{ cases|length }}</strong></article><article class="stat-card"><span class="stat-label">Perfil de acesso</span><strong class="stat-value stat-role">{{ user.get_role_display }}</strong></article><article class="stat-card"><span class="stat-label">Mapa</span><strong class="stat-value stat-role">Interativo</strong></article></section>
+<div class="dashboard-grid">
+<section class="panel map-panel"><div class="panel-head"><div><h2>Mapa de ocorr&ecirc;ncias</h2><p class="panel-subtitle">Localiza&ccedil;&atilde;o dos chamados dispon&iacute;veis para seu perfil.</p></div><span class="badge">OpenStreetMap</span></div><div id="case-map" class="map" aria-label="Mapa interativo dos chamados"></div><p class="map-note">Mapa &copy; OpenStreetMap contributors</p></section>
+<section class="panel"><div class="panel-head"><div><h2>Chamados recentes</h2><p class="panel-subtitle">Atualiza&ccedil;&otilde;es mais recentes da cidade.</p></div></div><div class="case-list">
+{% for item in cases %}{% with case=item.case %}<article class="case-card {% if not item.can_view_detail %}case-public{% endif %}"><div class="case-card-top"><div>{% if item.can_view_detail %}<span class="case-category">{{ case.category }}</span><h3><a href="{{ item.detail_url }}">{{ case.title }}</a></h3>{% else %}<span class="case-category">Chamado p&uacute;blico</span><h3>Status da ocorr&ecirc;ncia</h3>{% endif %}</div><span class="badge status-{{ case.status }}">{{ case.get_status_display }}</span></div><div class="meta"><span>{{ case.created_at|date:"d/m/Y H:i" }}</span>{% if is_privileged %}<span>Por {{ case.requester.get_full_name|default:case.requester.username }}</span>{% endif %}</div>{% if item.can_view_detail %}<p>{{ case.description|truncatechars:100 }}</p>{% else %}<p>Detalhes restritos ao requerente.</p>{% endif %}</article>{% endwith %}{% empty %}<div class="empty">Nenhum chamado dispon&iacute;vel ainda. {% if can_create %}<a href="{% url 'cases:create' %}">Registre o primeiro chamado.</a>{% endif %}</div>{% endfor %}
+</div></section></div>
+{{ map_cases|json_script:"map-cases-data" }}
+{% endblock %}
+{% block scripts %}<script src="{% static 'cases/js/case-list-map.js' %}" defer></script>{% endblock %}

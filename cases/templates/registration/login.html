@@ -1,0 +1,10 @@
+{% extends "cases/base.html" %}
+{% block title %}Entrar &middot; UrbanFlow{% endblock %}
+{% block content %}
+<section class="auth-card">
+<div class="eyebrow">Acesso &agrave; plataforma</div><h1>Bem-vindo ao UrbanFlow</h1><p>Entre para registrar ocorr&ecirc;ncias e acompanhar os chamados da sua cidade.</p>
+{% if form.errors %}<div class="notice notice-error">Usu&aacute;rio ou senha incorretos. Confira seus dados e tente novamente.</div>{% endif %}
+<form method="post" class="auth-form">{% csrf_token %}{{ form.as_p }}{% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}<div class="actions"><button class="button full" type="submit">Entrar na plataforma</button></div></form>
+<div class="auth-helper">Primeiro acesso? <a href="{% url 'accounts:cadastro' %}">Crie sua conta de requerente</a>.</div>
+</section>
+{% endblock %}

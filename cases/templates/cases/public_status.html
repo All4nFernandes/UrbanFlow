@@ -1,0 +1,5 @@
+{% extends "cases/base.html" %}
+{% block title %}Status do chamado &middot; UrbanFlow{% endblock %}
+{% block breadcrumb %}ACOMPANHAMENTO P&Uacute;BLICO{% endblock %}
+{% block topbar_title %}Status da ocorr&ecirc;ncia{% endblock %}
+{% block content %}<section class="panel status-page"><div class="eyebrow">Acompanhamento p&uacute;blico &middot; chamado #{{ public_id }}</div><h1>Status da ocorr&ecirc;ncia</h1><p>Este chamado pertence a outro requerente. Por privacidade, somente o status p&uacute;blico &eacute; exibido.</p><span class="badge">{{ status }}</span><div class="actions"><a class="button secondary" href="{% url 'cases:list' %}">Voltar ao painel</a></div></section>{% endblock %}

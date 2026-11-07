@@ -1,0 +1,13 @@
+{% extends "cases/base.html" %}
+{% load static %}
+{% block title %}Novo chamado &middot; UrbanFlow{% endblock %}
+{% block breadcrumb %}NOVO CHAMADO{% endblock %}
+{% block topbar_title %}Registrar ocorr&ecirc;ncia urbana{% endblock %}
+{% block content %}
+<section class="page-heading"><div><div class="eyebrow">Novo registro</div><h1>Abra um chamado</h1><p>Descreva a ocorr&ecirc;ncia e marque o local no mapa.</p></div><a class="button secondary" href="{% url 'cases:list' %}">Voltar ao painel</a></section>
+<form method="post" class="form-layout" novalidate>{% csrf_token %}
+<section class="panel form-panel"><h2>Detalhes da ocorr&ecirc;ncia</h2><p>Preencha as informa&ccedil;&otilde;es para encaminhar o chamado corretamente.</p>{% if form.non_field_errors %}<div class="form-errors">{{ form.non_field_errors }}</div>{% endif %}<div class="form-grid">{{ form.as_p }}</div><div class="actions"><button class="button" type="submit">Registrar chamado</button><a class="button secondary" href="{% url 'cases:list' %}">Cancelar</a></div></section>
+<section class="panel map-panel"><div class="panel-head"><div><h2>Localiza&ccedil;&atilde;o</h2><p class="panel-subtitle">Clique no mapa no ponto da ocorr&ecirc;ncia.</p></div></div><p class="map-hint">O marcador atualiza latitude e longitude no formul&aacute;rio.</p><div id="select-map" class="map" aria-label="Selecione no mapa a localiza&ccedil;&atilde;o do chamado"></div><p class="map-note">Mapa &copy; OpenStreetMap contributors</p></section>
+</form>
+{% endblock %}
+{% block scripts %}<script src="{% static 'cases/js/case-form-map.js' %}" defer></script>{% endblock %}

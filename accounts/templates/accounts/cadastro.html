@@ -1,0 +1,10 @@
+{% extends "cases/base.html" %}
+{% block title %}Criar conta &middot; UrbanFlow{% endblock %}
+{% block content %}
+<section class="auth-card">
+<div class="eyebrow">Cadastro de requerente</div><h1>Crie sua conta</h1><p>Cadastre-se para registrar chamados e acompanhar suas solicita&ccedil;&otilde;es.</p>
+{% if form.non_field_errors %}<div class="notice notice-error">{{ form.non_field_errors }}</div>{% endif %}
+<form method="post" class="auth-form">{% csrf_token %}{{ form.as_p }}<div class="actions"><button class="button full" type="submit">Criar conta</button></div></form>
+<div class="auth-helper">J&aacute; possui acesso? <a href="{% url 'login' %}">Entrar</a>.</div>
+</section>
+{% endblock %}
